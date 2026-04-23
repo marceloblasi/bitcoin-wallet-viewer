@@ -1,0 +1,17 @@
+{
+  "name": "bitcoin-wallet-viewer",
+  "version": "1.0.0",
+  "description": "Bitcoin Wallet Viewer Desktop App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . \"BitcoinWallet\" --platform=win32 --arch=x64 --icon=icon.ico --out=release-builds --overwrite"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^41.0.3",
+    "electron-is-dev": "^3.0.1",
+    "electron-packager": "^17.1.2"
+  }
+}

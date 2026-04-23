@@ -1,0 +1,7 @@
+node_modules/
+release-builds/
+build-final/
+convert_icon.py
+main.js
+package.json
+package-lock.json

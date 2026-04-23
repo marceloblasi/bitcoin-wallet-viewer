@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SatoshiVision | Bitcoin Wallet Viewer</title>
+    <meta name="description" content="View Bitcoin wallet balances and transactions securely using public keys (addresses).">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+    
+    <main class="app-container">
+        <header class="app-header">
+            <div class="logo-container">
+                <i class="fa-brands fa-bitcoin"></i>
+                <h1>Satoshi<span class="highlight">Vision</span></h1>
+            </div>
+            <p class="subtitle">Enter a public Bitcoin address to view its holdings and history.</p>
+        </header>
+
+        <section class="search-section glass-panel">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="address-input" placeholder="e.g. 1A1zP1... or xpub..." autocomplete="off" spellcheck="false">
+                <button id="search-btn" class="primary-btn">Analyze</button>
+            </div>
+            <div id="error-message" class="error-msg hidden"></div>
+        </section>
+
+        <div id="loading-state" class="loading-state hidden">
+            <div class="spinner"></div>
+            <p>Scanning blockchain...</p>
+        </div>
+
+        <div id="wallet-dashboard" class="dashboard-hidden">
+            <section class="overview-section">
+                <div class="stat-card glass-panel main-balance">
+                    <div class="stat-icon"><i class="fa-solid fa-wallet"></i></div>
+                    <div class="stat-content">
+                        <h3>Current Balance</h3>
+                        <div class="amount">
+                            <span id="bal-btc">0.00000000</span> <span class="currency">BTC</span>
+                        </div>
+                        <div class="amount-usd" id="bal-usd">$0.00</div>
+                    </div>
+                </div>
+
+                <div class="stat-card glass-panel">
+                    <div class="stat-icon received-icon"><i class="fa-solid fa-arrow-down"></i></div>
+                    <div class="stat-content">
+                        <h3>Total Received</h3>
+                        <div class="amount">
+                            <span id="tot-recv">0.00000000</span> <span class="currency">BTC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card glass-panel">
+                    <div class="stat-icon sent-icon"><i class="fa-solid fa-arrow-up"></i></div>
+                    <div class="stat-content">
+                        <h3>Total Sent</h3>
+                        <div class="amount">
+                            <span id="tot-sent">0.00000000</span> <span class="currency">BTC</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card glass-panel">
+                    <div class="stat-icon count-icon"><i class="fa-solid fa-list-ol"></i></div>
+                    <div class="stat-content">
+                        <h3>Transactions</h3>
+                        <div class="amount">
+                            <span id="tx-count">0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="transactions-section glass-panel">
+                <div class="section-header">
+                    <h2>Recent Transactions</h2>
+                    <a href="#" id="view-all-link" target="_blank" class="view-all-btn">View Explorer <i class="fa-solid fa-external-link-alt"></i></a>
+                </div>
+                <div class="tx-list" id="tx-list">
+                    <!-- Transactions injected here by JS -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
