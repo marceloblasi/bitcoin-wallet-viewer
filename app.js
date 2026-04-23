@@ -128,10 +128,14 @@ document.addEventListener('DOMContentLoaded', () => {
             console.warn('Blockchair fallback failed:', e);
         }
 
-        // 2. Try Trezor through multiple proxies with HTML detection
+        // 2. Try Trezor and Electrum through multiple proxies
+        const electrumUrl = `https://blockbook.electrum.org/api/v2/xpub/${xpub}?details=txs`;
+        
         const proxies = [
-            `https://api.allorigins.win/get?url=${encodeURIComponent(trezorUrl)}`, // JSON Wrapped
+            `https://api.allorigins.win/get?url=${encodeURIComponent(trezorUrl)}`, 
+            `https://api.allorigins.win/get?url=${encodeURIComponent(electrumUrl)}`,
             `https://corsproxy.io/?url=${encodeURIComponent(trezorUrl)}`,
+            `https://corsproxy.io/?url=${encodeURIComponent(electrumUrl)}`,
             `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(trezorUrl)}`
         ];
 
